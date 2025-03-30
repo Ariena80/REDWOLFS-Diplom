@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Красные волки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='style/icon.ico') }}" type="image-x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/animation.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/dark theme.js') }}" defer></script>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 80px; /* Отступ от футера */
+}
+
+.left-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news-section {
+    width: 90%;
+    margin-top: 5px;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.news_card {
+    width: 450px;
+    height: 450px;
+    background-color: #6b2376;
+    color: #ffffff;
+    border: 6px solid #5a0888;
+    border-radius: 10px;
+    margin: 5px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+    transform-origin: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.news_card h2 {
+    margin-bottom: 20px;
+    color: white;
+    width: 95%;
+    text-align: center;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 30px;
+}
+
+.news_card p {
+    margin: 0;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    line-clamp: 5;
+    box-orient: vertical;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.news_card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    object-fit: cover;
+
+}
+
+.read-more-button {
+    background-color: transparent;
+    border: none;
+    color: #3e018f;
+    text-decoration: underline;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: right;
+    display: block;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    font-weight: bold;
+}
+
+.read-more-button:hover {
+    color: #480177;
+}
+
+.calendar {
+    width: 90%;
+    margin: 20px 0;
+    background-color: #5a0888;
+    color: white;
+    border: 3px solid white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.statistics-section {
+    width: 90%;
+    margin-top: 20px;
+}
+
+.statistics-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(0,0,0,0.1);
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+.statistics-table th, .statistics-table td {
+    border: 2px solid rgba(0,0,0,0.5);
+    padding: 10px;
+    text-align: center;
+}
+
+.statistics-table th {
+    background-color: #5a0888;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.statistics-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.rating {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    background-color: #fe1c454b;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.slogan {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: oblique;
+    color: white;
+}
+
+.welcome {
+    font-size: 24px;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+.present-container {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-decoration: underline;
+    color: white;
+    margin-top: 20px;
+}
+
+.present {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-left: 60px;
+    text-align: left;
+}
+
+.present p {
+    margin: 5px 0;
+}
+
+footer {
+    background-color: #5a0888;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #5a0888;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    color: white;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Добавляем отступ снизу для основного контейнера */
+.main-content {
+    padding-bottom: 60px; /* Высота футера */
+}
+</style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='style/logotip.png') }}" alt="Логотип" height="100%" width="4%">
+        <nav>
+            <a href="{{ url_for('home') }}" class="news" data-text="Новости"></a>
+            <a href="{{ url_for('team') }}" class="team" data-text="Команды"></a>
+            <a href="{{ url_for('media') }}" class="media" data-text="Медиа"></a>
+            <a href="{{ url_for('measure_upcoming') }}" class="iconMeasure" data-text="Мероприятия"></a>
+            <a href="{{ url_for('contact') }}" class="contact" data-text="О нас"></a>
+            <a href="{{ url_for('login') }}" class="account-link" data-text="Профиль"></a>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle">
+  <img id="theme-icon" src="static/style/White Mode.png" alt="Иконка светлой темы">
+</button>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="left-content">
+                <div class="news-section">
+                </div>
+            </div>
+
+            <div class="right-content">
+                <div class="calendar">
+                    <h2>Календарь</h2>
+                    <p>Здесь будет календарь</p>
+                </div>
+
+                <section class="statistics-section">
+                    <h2 class="rating">Статистика</h2>
+                    <table class="statistics-table">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Команда</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Команда 1</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Команда 2</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Команда 3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="newsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Image" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
+            <h2 id="modalTitle"></h2>
+            <p id="modalContent"></p>
+        </div>
+    </div>
+    <footer>
+        <p>&COPY;Arieshka, 2024.</p>
+    </footer>
+
+    <script>
+        const newsData = [
+            {
+                title: "Турнир по Армрестлингу",
+                content: "13 декабря в 12.20 в 1 корпусе состоится турнир по армрестлингу среди юношей в рамках Всероссийского проекта АССК России «УниверЛига». Турнир будет проходить в категориях: 70 кг, 80 кг, 90 кг, 90 +, абсолютная. Для участия в турнире необходимо заранее подать заявку на портале <a href='https://rosstudsport.ru/tournament/7976' target='_blank'>rosstudsport.ru</a>. На взвешивание подойти к 12.10 По всем вопросам можно обратиться к менеджеру по силовым видам спорта <a href='https://vk.com/id535343960' target='_blank'>Даниилу Дегтереву</a> или руководителю ССК «Красные волки» <a href='https://vk.com/viktoriam87' target='_blank'>Виктории</a>.",
+                image: "{{ url_for('static', filename='uploads/armwrestling.jpg') }}"
+            },
+            {
+                title: "Турнир CS2 среди СПО города Вологды",
+                content: "2 декабря, спортсмены нашего ССК, приняли участие в турнире по компьютерному спорту «Кубок Русского Севера» в рамках Спартакиады СПО. Турнир проводился в очном формате в дисциплине «Тактический трехмерный бой» (вид программы Counter-Strike 2). 9 команд СПО заявились для участия. В состав нашей команды вошли: Батраков Никита, Поп Захар, Малетин Вадим, Быстров Савелий, Чайкин Никита. По итогам турнира, наша команда заняла 5 место.",
+                image: "{{ url_for('static', filename='uploads/cs2.jpg') }}"
+            },
+            {
+                title: "#АССК.ФЕСТ",
+                content: "Вот и завершилось самое яркое мероприятие в сфере массового спорта «Всероссийский фестиваль студенческого спорта АССК.Фест 2024». Прошли последние турниры, награждение победителей по всем дисциплинам и закрытие фестиваля. Это было здорово! 🐺 По итогам фестиваля, ССК «Красные волки» достигли следующих результатов 🏆: 🏓 Настольный теннис - командный зачет- 🥉 - личный зачет- 🥉место Колотилов Степан ♟️ Шахматы - командный зачет - 🥈место - личный зачет- 🥇место Отрощенко Степан; 🥈место- Лапин Артем 🎮 Dota 2 - командный зачет- 6 место Поздравляем победителей, желаем новых спортивных достижений. Благодарим всех ребят за участие. Гордимся вами!",
+                image: "{{ url_for('static', filename='uploads/fest.jpg') }}"
+            },
+            {
+                title: "Открыли сезон АСБ",
+                content: "21 и 22 ноября наши сборные команды по баскетболу приняли участие в первых играх Всероссийских соревнований по баскетболу в рамках Ассоциации студенческого баскетбола, г. Вологда, сезон 2024-2025. Итоги двух игровых дней: ВКСиИТ( юноши)-ВГМХА, уступили сопернику. ВКСиИТ(девушки) - СЗИ МГЮА, одержали победу 👍. Благодарим наши команды за участие, поздравляем команду девушек с первой победой. Верим в нашу команду юношей, все у вас получится! Приглашаем всех болельщиков на соревнования, приходи и поддержи наши команды!(расписание игр прилагаем)",
+                image: "{{ url_for('static', filename='uploads/basketball.jpg') }}"
+            }
+        ];
+
+        function openModal(index) {
+            const news = newsData[index - 1];
+            document.getElementById('modalTitle').innerText = news.title;
+            document.getElementById('modalContent').innerHTML = news.content;
+            document.getElementById('modalImage').src = news.image;
+            document.getElementById('newsModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('newsModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('newsModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsCards = document.querySelectorAll('.news_card');
+            newsCards.forEach((card, index) => {
+                const content = newsData[index].content;
+                const words = content.split(' ');
+                let lines = [];
+                let currentLine = '';
+
+                words.forEach(word => {
+                    if (currentLine.length + word.length + 1 > 50) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+
+                if (currentLine.trim()) {
+                    lines.push(currentLine.trim());
+                }
+
+                let truncatedContent = lines.slice(0, 5).join(' ');
+                if (lines.length > 5) {
+                    truncatedContent += '...';
+                }
+                card.querySelector('p').innerHTML = truncatedContent;
+            });
+        });
+    </script>
+</body>
+</html>
