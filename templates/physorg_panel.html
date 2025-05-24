@@ -10,1145 +10,1044 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/dark theme.js') }}" defer></script>
+    <style>
 
-</head>
-<style>
+.container {
+display: flex;
+width: 100%;
+}
+
+.sidebar {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+background-color: #f8f9fa;
+padding: 20px;
+border-radius: 8px;
+margin-right: 10px;
+width: 200px;
+}
+
+.sidebar button {
+background-color: #5a0888;
+color: #fff;
+border: none;
+padding: 10px 20px;
+margin: 5px 0;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+background-color: #4a0668;
+}
+
 #profileForm {
-    background-color: transparent;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 800px;
-    display: flex;
-    align-items: center;
+background-color: #fff;
+margin-top: 50px;
+padding: 40px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+width: 300px;
+text-align: center;
+margin-right: 20px;
 }
 
 #profileForm h2 {
-    margin-bottom: 20px;
-    color: white;
-    width: 100%;
-    text-align: center;
-    font-size: 40px;
-}
-
-.submit
-{
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 50%;
-    margin-left: 88px;
-    background-color: transparent;
-}
-
-.profile-section {
-    display: flex;
-    width: 70%;
-}
-
-.profile-picture {
-    flex: 1;
-    text-align: center;
-    margin-left: 300px;
+margin-bottom: 20px;
+color: #333;
+font-size: 24px;
 }
 
 .profile-picture img {
-    width: 380px;
-    height: 380px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-.submit {
-    background-color: transparent;
-    border: none;
-    color: #9b05ff;
-    text-decoration: underline;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.submit:hover {
-    color: #480177;
-}
-
-.profile-info {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 40px;
+width: 150px;
+height: 150px;
+border-radius: 50%;
+border: 2px solid #ccc;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-bottom: 10px;
 }
 
 .profile-info .column {
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    width: 80%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: rgb(122, 39, 134);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.profile-info .form-group {
-    margin-bottom: 15px;
+border: 1px solid #ccc;
+border-radius: 8px;
+padding: 10px;
+margin-bottom: 10px;
+background-color: #f9f9f9;
 }
 
 .profile-info .form-group label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-    color: white;
-    font-size: 40px;
+font-weight: bold;
+display: block;
+margin-bottom: 5px;
 }
 
 .profile-info .form-group p {
-    margin: 0;
-    font-size: 22px;
-    color: white;
-}
-
-#cropModal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 300px;
-    height: 400px;
-    text-align: center;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.crop-container {
-    position: relative;
-    width: 100%;
-    height: 300px;
-}
-
-.PhotoAreaSelector__linzaFrame {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.PhotoAreaSelector__linzaBorder {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border: 2px solid #000;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
-}
-
-#cropCanvas {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-}
-
-#zoomRange {
-    width: 100%;
-    margin-top: 20px;
-}
-
-button[id="savePic"] {
-    margin-top: 20px;
-    width: 100%;
+margin: 0;
+font-size: 16px;
 }
 
 #mediaForm {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+background-color: transparent;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
 }
 
 #mediaForm h2 {
-    margin-top: 120px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    color: white;
-    margin-left: 605px;
+margin-top: 120px;
+font-family: 'Nunito', sans-serif;
+font-weight: 700;
+color: white;
+margin-left: 605px;
 }
 
 #mediaForm form {
-    display: flex;
-    flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 #mediaForm form label {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #mediaForm form input[type="text"]{
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 35%;
-    margin-left: 480px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 35%;
+margin-left: 480px;
 }
 
 #mediaForm form select{
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
-    margin-left: 530px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
+margin-left: 530px;
 }
 
 #mediaForm form input[type="file"]{
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 25%;
-    margin-left: 20px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 25%;
+margin-left: 20px;
 }
 
 #mediaForm form input[type="submit"] {
-    padding: 10px 20px;
-    background: linear-gradient(#5a0888, #4a0668);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    width: 20%;
-    height: 30%;
-    align-items: center;
-    justify-items: center;
-    margin-left: 600px;
+padding: 10px 20px;
+background: linear-gradient(#5a0888, #4a0668);
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+font-weight: bold;
+width: 20%;
+height: 30%;
+align-items: center;
+justify-items: center;
+margin-left: 600px;
 }
 
 #mediaForm form input[type="submit"]:hover {
-    background-color: white;
+background-color: white;
 }
 
 #teamForm {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+background-color: transparent;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
 }
 
 #teamForm h2 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    color: white;
-    margin-left: 605px;
+font-family: 'Nunito', sans-serif;
+font-weight: 700;
+color: white;
+margin-left: 605px;
 }
 
 #teamForm form {
-    display: flex;
-    flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 #teamForm form label[for="team_name"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #teamForm form label[for="course"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #teamForm form label[for="sport_type"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #teamForm form label[for="team_members"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #teamForm form label[for="reserve_member"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #teamForm form label[id="gender"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #teamForm form input[type="text"]
 {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 35%;
-    margin-left: 480px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 35%;
+margin-left: 480px;
 }
 
 #teamForm form textarea
 {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
-    margin-left: 530px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
+margin-left: 530px;
 }
 
 #teamForm form input[type="file"]
 {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 25%;
-    margin-left: 550px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 25%;
+margin-left: 550px;
 }
 
 #teamForm form select[id="course"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
-    margin-left: 530px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
+margin-left: 530px;
 }
 
 #teamForm form select[id="sport_type"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
-    margin-left: 530px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
+margin-left: 530px;
 }
 
 #teamForm form input[type="submit"] {
-    padding: 10px 20px;
-    background: linear-gradient(#5a0888, #4a0668);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    width: 20%;
-    height: 30%;
-    align-items: center;
-    justify-items: center;
-    margin-left: 600px;
+padding: 10px 20px;
+background: linear-gradient(#5a0888, #4a0668);
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+font-weight: bold;
+width: 20%;
+height: 30%;
+align-items: center;
+justify-items: center;
+margin-left: 600px;
 }
 
 #teamForm form input[type="submit"]:hover {
-    background-color: white;
+background-color: white;
 }
 
 .radio-group {
-    display: flex;
-    align-items: center;
-    margin-left: 640px;
+display: flex;
+align-items: center;
+margin-left: 640px;
 }
 
 .radio-group label[for="female"] {
-    margin-bottom: 2px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-right: 10px;
+margin-bottom: 2px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-right: 10px;
 }
 
 .radio-group label[for="male"] {
-    margin-bottom: 2px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-right: 10px;
+margin-bottom: 2px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-right: 10px;
 }
 
 .radio-group input[type="radio"] {
-    margin-right: 10px;
+margin-right: 10px;
 }
 
 #physOrgForm {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+background-color: transparent;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
 }
 
 #physOrgForm h2 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    color: white;
-    text-align: center;
-    margin-top: 85px;
+font-family: 'Nunito', sans-serif;
+font-weight: 700;
+color: white;
+text-align: center;
+margin-top: 85px;
 }
 
 #physOrgForm form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
-.form-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
+#form-container {
+width: calc(100% - 520px);
 }
 
 .form-column {
-    width: 48%;
-    display: flex;
-    flex-direction: column;
+width: 48%;
+display: flex;
+flex-direction: column;
 }
 
 .login-column {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .login-container {
-    width: 100%;
+width: 100%;
 }
 
 #physOrgForm form label {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
 }
 
 #physOrgForm form input[type="text"],
 #physOrgForm form select {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 100%;
+box-sizing: border-box;
 }
 
 #physOrgForm form input[type="submit"] {
-    padding: 10px 20px;
-    background: linear-gradient(#5a0888, #4a0668);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    width: 200px;
-    margin-top: 20px;
+padding: 10px 20px;
+background: linear-gradient(#5a0888, #4a0668);
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+font-weight: bold;
+width: 200px;
+margin-top: 20px;
 }
 
 #physOrgForm form input[type="submit"]:hover {
-    background-color: white;
-    color: #4a0668;
+background-color: white;
+color: #4a0668;
 }
 
 .radio-group-physOrgForm {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+display: flex;
+align-items: center;
+margin-bottom: 20px;
 }
 
 .radio-group-physOrgForm label {
-    margin-bottom: 0;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-right: 10px;
-    margin-left: 10px;
+margin-bottom: 0;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-right: 10px;
+margin-left: 10px;
 }
 
 .radio-group-physOrgForm input[type="radio"] {
-    margin-right: 10px;
+margin-right: 10px;
 }
 
 #eventForm {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px
+background-color: transparent;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 20px
 }
 
 #eventForm h2 {
-    margin-top: 120px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    color: white;
-    margin-left: 605px;
+margin-top: 120px;
+font-family: 'Nunito', sans-serif;
+font-weight: 700;
+color: white;
+margin-left: 605px;
 }
 
 #eventForm form {
-    display: flex;
-    flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 #eventForm form label[for="event_name"]
 {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 485px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 485px;
 }
 
 #eventForm form label[for="sport_type"]
 {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 475px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 475px;
 }
 
 #eventForm form label[for="location"]
 {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #eventForm form label[for="event_type"]
 {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #eventForm form label[id="gender"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 520px;
-    white-space: nowrap;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 520px;
+white-space: nowrap;
 }
 
 #eventForm form label[for="event_time"]
 {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
 
 }
 
 #eventForm form label[for="event_date"]
 {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
 }
 
 #eventForm form input[type="text"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 25%;
-    margin-left: 555px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 25%;
+margin-left: 555px;
 }
 
 #eventForm form input[type="date"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
 
 }
 
 #eventForm form input[type="time"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
 }
 
 #eventForm form select {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
-    margin-left: 530px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
+margin-left: 530px;
 }
 
 #eventForm form input[type="submit"] {
-    padding: 10px 20px;
-    background: linear-gradient(#5a0888, #4a0668);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    width: 20%;
-    height: 30%;
-    align-items: center;
-    justify-items: center;
-    margin-left: 600px;
+padding: 10px 20px;
+background: linear-gradient(#5a0888, #4a0668);
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+font-weight: bold;
+width: 20%;
+height: 30%;
+align-items: center;
+justify-items: center;
+margin-left: 600px;
 }
 
 #eventForm form input[type="submit"]:hover {
-    background-color: white;
+background-color: white;
 }
 
 #sportsFields {
-    display: none;
+display: none;
 }
 
 .radio-group-eventForm {
-    display: flex;
-    align-items: center;
-    margin-left: 640px;
-    margin-bottom: 30px;
+display: flex;
+align-items: center;
+margin-left: 640px;
+margin-bottom: 30px;
 }
 
 .radio-group-eventForm label[for="female"] {
-    margin-bottom: 2px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-right: 10px;
-    margin-left: 10px;
+margin-bottom: 2px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-right: 10px;
+margin-left: 10px;
 }
 
 .radio-group-eventForm label[for="male"] {
-    margin-bottom: 2px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-right: 10px;
-    margin-left: 10px;
+margin-bottom: 2px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-right: 10px;
+margin-left: 10px;
 }
 
 .radio-group-eventForm input[type="radio"] {
-    margin-right: 10px;
+margin-right: 10px;
 }
 .date-time-container {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 455px;
-    width: 60%;
+display: flex;
+justify-content: space-between;
+margin-left: 455px;
+width: 60%;
 }
 
 .date-time-container div {
-    flex: 1;
-    margin-right: 0px;
+flex: 1;
+margin-right: 0px;
 }
 
 .date-time-container div:last-child {
-    margin-right: 300px;
+margin-right: 300px;
 }
 
 .date-time-container input[type="date"],
 .date-time-container input[type="time"] {
-    width: 100%;
+width: 100%;
 }
 
 #editTrainingScheduleForm {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+background-color: transparent;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
 }
 
 #editTrainingScheduleForm h2 {
-    margin-top: 150px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    color: white;
-    margin-left: 470px;
+margin-top: 150px;
+font-family: 'Nunito', sans-serif;
+font-weight: 700;
+color: white;
+margin-left: 470px;
 }
 
 #editTrainingScheduleForm form {
-    display: flex;
-    flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 #editTrainingScheduleForm form label[for="sport_type_schedule"],[for="coach_name"]{
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #editTrainingScheduleForm form label[for="training_time"]
 {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
 
 }
 
 #editTrainingScheduleForm form label[for="training_date"]
 {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
 }
 
 #editTrainingScheduleForm form input[type="text"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 25%;
-    margin-left: 530px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 25%;
+margin-left: 530px;
 }
 
 #editTrainingScheduleForm form input[type="date"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 40%;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 40%;
 
 }
 
 #editTrainingScheduleForm form input[type="time"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
 }
 
 #editTrainingScheduleForm form select {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
-    margin-left: 500px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
+margin-left: 500px;
 }
 
 #editTrainingScheduleForm form input[type="submit"] {
-    padding: 10px 20px;
-    background: linear-gradient(#5a0888, #4a0668);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    width: 20%;
-    height: 30%;
-    align-items: center;
-    justify-items: center;
-    margin-left: 600px;
+padding: 10px 20px;
+background: linear-gradient(#5a0888, #4a0668);
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+font-weight: bold;
+width: 20%;
+height: 30%;
+align-items: center;
+justify-items: center;
+margin-left: 600px;
 }
 
 #editTrainingScheduleForm form input[type="submit"]:hover {
-    background-color: white;
+background-color: white;
 }
 
 .date-time-container-TrainingScheduleForm {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 500px;
-    width: 60%;
+display: flex;
+justify-content: space-between;
+margin-left: 500px;
+width: 60%;
 }
 
 .date-time-container-TrainingScheduleForm div {
-    flex: 1;
-    margin-right: 0px;
+flex: 1;
+margin-right: 0px;
 }
 
 .date-time-container-TrainingScheduleForm div:last-child {
-    margin-right: 380px;
+margin-right: 380px;
 }
 
 .date-time-container-TrainingScheduleForm input[type="date"],
 .date-time-container-TrainingScheduleForm input[type="time"] {
-    width: 100%;
+width: 100%;
 }
 
 #newsForm {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+background-color: transparent;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
 }
 
 #newsForm h2 {
-    margin-top: 120px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    color: white;
-    margin-left: 620px;
+margin-top: 120px;
+font-family: 'Nunito', sans-serif;
+font-weight: 700;
+color: white;
+margin-left: 620px;
 }
 
 #newsForm form {
-    display: flex;
-    flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 #newsForm form label[for="title"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #newsForm form label[for="content"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #newsForm form label[for="image"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 520px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 520px;
 }
 
 #newsForm form label[for="news_content"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 430px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 430px;
 }
 
 #newsForm form input[type="text"]{
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
-    margin-left: 520px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
+margin-left: 520px;
 }
 
 #newsForm form input[type="file"]{
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 25%;
-    margin-left: 550px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 25%;
+margin-left: 550px;
 }
 
 #newsForm form textarea
 {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 35%;
-    height: 70%;
-    margin-left: 480px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 35%;
+height: 70%;
+margin-left: 480px;
 }
 
 #newsForm form input[type="submit"] {
-    padding: 10px 20px;
-    background: linear-gradient(#5a0888, #4a0668);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    width: 20%;
-    height: 30%;
-    align-items: center;
-    justify-items: center;
-    margin-left: 600px;
+padding: 10px 20px;
+background: linear-gradient(#5a0888, #4a0668);
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+font-weight: bold;
+width: 20%;
+height: 30%;
+align-items: center;
+justify-items: center;
+margin-left: 600px;
 }
 
 #newsForm form input[type="submit"]:hover {
-    background-color: white;
+background-color: white;
 }
 
 #awardsForm {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+background-color: transparent;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
 }
 
 #awardsForm h2 {
-    margin-top: 120px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    color: white;
-    margin-left: 620px;
+margin-top: 120px;
+font-family: 'Nunito', sans-serif;
+font-weight: 700;
+color: white;
+margin-left: 620px;
 }
 
 #awardsForm form {
-    display: flex;
-    flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 #awardsForm form label[for="news_title"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 465px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 465px;
 }
 
 #awardsForm form label {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 520px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 520px;
 }
 
 #awardsForm form label[for="news_content"] {
-    margin-bottom: 5px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    color: white;
-    margin-left: 430px;
+margin-bottom: 5px;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+color: white;
+margin-left: 430px;
 }
 
 #awardsForm form input[type="text"]{
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 30%;
-    margin-left: 520px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 30%;
+margin-left: 520px;
 }
 
 #awardsForm form input[type="file"]{
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 25%;
-    margin-left: 550px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 25%;
+margin-left: 550px;
 }
 
 #awardsForm form textarea
 {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    width: 35%;
-    height: 70%;
-    margin-left: 480px;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+width: 35%;
+height: 70%;
+margin-left: 480px;
 }
 
 #awardsForm form input[type="submit"] {
-    padding: 10px 20px;
-    background: linear-gradient(#5a0888, #4a0668);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    width: 20%;
-    height: 30%;
-    align-items: center;
-    justify-items: center;
-    margin-left: 600px;
+padding: 10px 20px;
+background: linear-gradient(#5a0888, #4a0668);
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Nunito', sans-serif;
+font-size: 16px;
+font-weight: bold;
+width: 20%;
+height: 30%;
+align-items: center;
+justify-items: center;
+margin-left: 600px;
 }
 
 #awardsForm form input[type="submit"]:hover {
-    background-color: white;
+background-color: white;
 }
 
-.navigation {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: transparent;
-    padding: 10px 0;
-    margin-left: 140px;
+
+
+
+
+.content {
+display: none;
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-left: 20px;
+width: calc(100% - 340px);
 }
 
-.navigation a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    transition: background-color 0.3s;
+.content.active {
+display: block;
 }
 
-.navigation a:hover {
-    background-color: transparent;
+.modal {
+display: none;
+position: fixed;
+z-index: 1;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgb(0,0,0);
+background-color: rgba(0,0,0,0.4);
 }
 
-.navigation a.active {
-    background-color: transparent; /* Цвет фона для активной ссылки */
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 300px;
+border-radius: 8px;
 }
 
-.logoutButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-right: 800px;
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
 }
 
-.logoutButton img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 30px;
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
 }
-
-.logoutButton:hover {
-    background: none;
-}
-
-</style>
+    </style>
+</head>
 <body>
-    <header >
+    <header>
         <img src="{{ url_for('static', filename='style/logotip.png') }}" alt="Логотип" height="100%" width="4%">
         <nav class="navigation">
             <a href="{{ url_for('home') }}" class="news" data-text="Новости"></a>
@@ -1157,16 +1056,43 @@ button[id="savePic"] {
             <a href="{{ url_for('measure_upcoming') }}" class="iconMeasure" data-text="Мероприятия"></a>
             <a href="{{ url_for('contact') }}" class="contact" data-text="О нас"></a>
             <a href="{{ url_for('login') }}" class="account-link" data-text="Профиль"></a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle">
+        <img id="theme-icon" src="static/style/White Mode.png" alt="Иконка светлой темы">
+        
+      </button>
         </nav>
-        <button id="theme-toggle" class="theme-toggle">
-  <img id="theme-icon" src="static/style/White Mode.png" alt="Иконка светлой темы">
-  
-</button>
     </header>
     <div class="container">
-
+        <div id="profileForm">
+            <h2>Мой профиль</h2>
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='style/icon-placeholder.png') }}" alt="Профиль" id="previewImage">
+                <button onclick="document.getElementById('profilePictureInput').click()">Загрузить фото</button>
+                <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+                <button id="deleteProfilePictureButton">Удалить фото</button>
+            </div>
+            <div class="profile-info">
+                <div class="column">
+                    <label>Фамилия:</label>
+                    <p id="surname"></p>
+                </div>
+                <div class="column">
+                    <label>Имя:</label>
+                    <p id="first_name"></p>
+                </div>
+                <div class="column">
+                    <label>Отчество:</label>
+                    <p id="middle_name"></p>
+                </div>
+                <div class="column">
+                    <label>Должность:</label>
+                    <p id="position"></p>
+                </div>
+                <button id="logoutButton">Выйти</button>
+            </div>
+        </div>
         <div class="sidebar">
-
             <button data-action="showTeamForm">Добавление команды</button>
             <button data-action="showPhysOrgForm">Добавление физорга</button>
             <button data-action="showMediaForm">Добавление фото/видео</button>
@@ -1174,681 +1100,547 @@ button[id="savePic"] {
             <button data-action="showEditTrainingScheduleForm">Редактирование расписания тренировок</button>
             <button data-action="showNewsForm">Добавление новостей</button>
             <button data-action="showAwardsForm">Добавление наград</button>
-
-        </div>
-
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-            </div>
+            <button data-action="showApproveRequests">Одобрение заявок</button>
         </div>
 
 
-        <div id="profileForm" class="content">
-            <h2>Мой профиль</h2>
-            <div class="profile-section">
-                <div class="profile-picture">
-                    <img src="{{ url_for('static', filename='style/icon-placeholder.png') }}" alt="Предварительный просмотр" id="previewImage">
-                    <button class="submit" onclick="document.getElementById('profilePictureInput').click()">Загрузить фото</button>
-                    <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
-                    <button class="submit" id="deleteProfilePictureButton">Удалить фото профиля</button>
-                </div>
-                <div class="profile-info">
-                    <figure>
-                        <div class="form-group">
-                            <div class="info-row">
-                                <div>
-                                    <h3>Фамилия</h3>
-                                    <label id="surname">Фамилия:</label>
-                                    <p id="surname"></p>
-                                </div>
-                                <div>
-                                    <h3>Имя</h3>
-                                    <label id="first_name">Имя:</label>
-                                    <p id="first_name"></p>
-                                </div>
-                                <div>
-                                    <h3>Отчество</h3>
-                                    <label id="middle_name">Отчество:</label>
-                                    <p id="middle_name"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="info-row">
-                                <div>
-                                    <button id="logoutButton" class="logoutButton">Выйти</button>  
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-
-        
-        <div id="cropModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeCropModal()">&times;</span>
-                <div class="crop-container">
-                    <div class="PhotoAreaSelector__linzaFrame" id="linzaFrame">
-                        <div class="PhotoAreaSelector__linzaBorder">
-                            <canvas id="cropCanvas" width="300" height="300"></canvas>
-                        </div>
-                    </div>
-                    <input type="range" id="zoomRange" min="1" max="3" step="0.1" value="1">
-                    <button id="savePic  onclick="saveCroppedImage()">Сохранить фото</button>
-                </div>
-            </div>
-        </div>
-        
-
-        <div id="mediaForm" class="content" style="display: none;">
-            <h2>Добавление фото/видео</h2>
-            <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <label for="title">Заголовок:</label>
-                <input type="text" id="title" name="title" required><br><br>
-
-                <label for="course">Выбор курса:</label>
-                <select id="course" name="course" required>
-                    <option value="1">1 курс</option>
-                    <option value="2">2 курс</option>
-                    <option value="3">3 курс</option>
-                    <option value="4">4 курс</option>
-                </select><br><br>
-
-                <label for="sport_type">Выбор вида спорта:</label>
-                <select id="sport_type" name="sport_type" required onchange="updateMediaForm()">
-                    <option value="football">Футбол</option>
-                    <option value="basketball">Баскетбол 3х3</option>
-                    <option value="volleyball">Волейбол</option>
-                </select><br><br>
-
-                <div id="media_files_container">
-                    <label for="media_files">Файлы:</label>
-                    <input type="file" id="media_files" name="media_files[]" multiple required><br><br>
-                </div>
-
-                <input type="submit" value="Загрузить">
-            </form>
-        </div>
-
-        <div id="teamForm" class="content" style="display: none;">
-            <h2>Добавление команды</h2>
-            <form action="add_team.php" method="POST">
-                <label for="team_name">Название команды:</label>
-                <input type="text" id="team_name" name="team_name" required><br><br>
-
-                <label for="course">Выбор курса:</label>
-                <select id="course" name="course" required>
-                    <option value="1">1 курс</option>
-                    <option value="2">2 курс</option>
-                    <option value="3">3 курс</option>
-                    <option value="4">4 курс</option>
-                </select><br><br>
-
-                <label for="sport_type">Выбор вида спорта:</label>
-                <select id="sport_type" name="sport_type" required onchange="updateTeamMembers()">
-                    <option value="football">Футбол</option>
-                    <option value="basketball">Баскетбол 3х3</option>
-                    <option value="volleyball">Волейбол</option>
-                </select><br><br>
-
-                <label id="gender">Пол участников:</label>
-                <div class="radio-group">
-                    <input type="radio" id="male" name="gender" value="male" required>
-                    <label for="male">Мужская</label>
-                    <input type="radio" id="female" name="gender" value="female" required>
-                    <label for="female">Женская</label>
-                </div><br><br>
-
-                <div id="team_members_container">
-                    <label id="team_members">Игроки команды:</label>
-                </div>
-
-                <label for="reserve_member">Запасной игрок:</label>
-                <input type="text" id="reserve_member" name="reserve_member" placeholder="Запасной игрок"><br><br>
-
-                <input type="submit" value="Добавить команду">
-            </form>
-
-        </div>
-
-        <div id="physOrgForm" class="content" style="display: none;">
-            <h2>Добавление физорга</h2>
-            <form action="add_physorg.php" method="POST">
-                <div class="form-container">
-                    <div class="form-column">
-                        
-                        <label id="last_name">Фамилия:</label>
-                        <input type="text" id="last_name" name="last_name" required>
-
-                        <label id="first_name">Имя:</label>
-                        <input type="text" id="first_name" name="first_name" required>
-
-                        <label id="middle_name">Отчество:</label>
-                        <input type="text" id="middle_name" name="middle_name" required>
-
-                        <label id="gender">Пол:</label>
-                        <div class="radio-group-physOrgForm">
-                            <input type="radio" id="male" name="gender" value="male" required>
-                            <label for="male">Мужская</label>
-                            <input type="radio" id="female" name="gender" value="female" required>
-                            <label for="female">Женская</label>
-                        </div>
-
-                        <label for="course">Курс:</label>
-                        <select id="course" name="course" required>
-                            <option value="1">1 курс</option>
-                            <option value="2">2 курс</option>
-                            <option value="3">3 курс</option>
-                            <option value="4">4 курс</option>
-                        </select>
-
-                        <label id="group">Группа:</label>
-                            <select id="group" name="group" required>
-                                <option value="ИСП-П">ИСП-П</option>
-                                <option value="ИСП-Р">ИСП-Р</option>
-                                <option value="ИСП-а">ИСП-А</option>
-                                <option value="СИС">СИС</option>
-                                <option value="ОИБ">ОИБ</option>
-                                <option value="ИСП-ИС">ИСП-ИС</option>
-                            </select>
-                    </div>
-                    <div class="form-column login-column">
-                        <div class="login-container">
-                            <label for="login">Логин:</label>
-                            <input type="text" id="login" name="login" required>
-
-                            <label for="password">Пароль:</label>
-                            <input type="text" id="password" name="password" required placeholder="Введите или сгенерируйте пароль">
-                            <button type="button" id="generatePasswordButton" onclick="generatePassword()">Сгенерировать пароль</button>
-                        </div>
-                    </div>
-                </div>
-                <input type="submit" value="Добавить физорга">
-            </form>
-        </div>
-
-        <!-- Форма добавление мероприятия -->
-        <div id="eventForm" class="content" style="display: none;">
-            <h2>Добавление мероприятия</h2>
-            <form action="add_event.php" method="POST">
-                <label for="event_type">Тип мероприятия:</label>
-                <select id="event_type" name="event_type" required onchange="toggleEventTypeFields()">
-                    <option value="sports">Спортивное</option>
-                    <option value="organizational">Организационное</option>
-                </select>
-
-                <div id="sportsFields" style="display: none;">
-                    <label for="sport_type">Вид спорта:</label>
-                    <select id="sport_type" name="sport_type" required>
+        <div id="form-container">
+            <!-- Формы будут отображаться здесь -->
+            <div id="mediaForm" class="content" style="display: none;">
+                <h2>Добавление фото/видео</h2>
+                <form action="upload.php" method="POST" enctype="multipart/form-data">
+                    <label for="title">Заголовок:</label>
+                    <input type="text" id="title" name="title" required><br><br>
+    
+                    <label for="course">Выбор курса:</label>
+                    <select id="course" name="course" required>
+                        <option value="1">1 курс</option>
+                        <option value="2">2 курс</option>
+                        <option value="3">3 курс</option>
+                        <option value="4">4 курс</option>
+                    </select><br><br>
+    
+                    <label for="sport_type">Выбор вида спорта:</label>
+                    <select id="sport_type" name="sport_type" required onchange="updateMediaForm()">
                         <option value="football">Футбол</option>
                         <option value="basketball">Баскетбол 3х3</option>
                         <option value="volleyball">Волейбол</option>
-                    </select>
-
+                    </select><br><br>
+    
+                    <div id="media_files_container">
+                        <label for="media_files">Файлы:</label>
+                        <input type="file" id="media_files" name="media_files[]" multiple required><br><br>
+                    </div>
+    
+                    <input type="submit" value="Загрузить">
+                </form>
+            </div>
+    
+            <div id="teamForm" class="content" style="display: none;">
+                <h2>Добавление команды</h2>
+                <form action="add_team.php" method="POST">
+                    <label for="team_name">Название команды:</label>
+                    <input type="text" id="team_name" name="team_name" required><br><br>
+    
+                    <label for="course">Выбор курса:</label>
+                    <select id="course" name="course" required>
+                        <option value="1">1 курс</option>
+                        <option value="2">2 курс</option>
+                        <option value="3">3 курс</option>
+                        <option value="4">4 курс</option>
+                    </select><br><br>
+    
+                    <label for="sport_type">Выбор вида спорта:</label>
+                    <select id="sport_type" name="sport_type" required onchange="updateTeamMembers()">
+                        <option value="football">Футбол</option>
+                        <option value="basketball">Баскетбол 3х3</option>
+                        <option value="volleyball">Волейбол</option>
+                    </select><br><br>
+    
                     <label id="gender">Пол участников:</label>
-                    <div class="radio-group-eventForm">
+                    <div class="radio-group">
                         <input type="radio" id="male" name="gender" value="male" required>
-                        <label for="male">Мужской</label>
+                        <label for="male">Мужская</label>
                         <input type="radio" id="female" name="gender" value="female" required>
-                        <label for="female">Женский</label>
+                        <label for="female">Женская</label>
+                    </div><br><br>
+    
+                    <div id="team_members_container">
+                        <label id="team_members">Игроки команды:</label>
                     </div>
-                </div>
-
-                <div id="commonFields">
-                    <div id="eventNameContainer">
-                        <label for="event_name">Название мероприятия:</label>
-                        <input type="text" id="event_name" name="event_name" required>
-                    </div>
-
-                    <div class="date-time-container">
-                        <div>
-                            <label for="event_date">Дата мероприятия:</label>
-                            <input type="date" id="event_date" name="event_date" required>
+    
+                    <label for="reserve_member">Запасной игрок:</label>
+                    <input type="text" id="reserve_member" name="reserve_member" placeholder="Запасной игрок"><br><br>
+    
+                    <input type="submit" value="Добавить команду">
+                </form>
+    
+            </div>
+    
+            <div id="physOrgForm" class="content" style="display: none;">
+                <h2>Добавление физорга</h2>
+                <form action="add_physorg.php" method="POST">
+                    <div class="form-container">
+                        <div class="form-column">
+                            
+                            <label id="last_name">Фамилия:</label>
+                            <input type="text" id="last_name" name="last_name" required>
+    
+                            <label id="first_name">Имя:</label>
+                            <input type="text" id="first_name" name="first_name" required>
+    
+                            <label id="middle_name">Отчество:</label>
+                            <input type="text" id="middle_name" name="middle_name" required>
+    
+                            <label id="gender">Пол:</label>
+                            <div class="radio-group-physOrgForm">
+                                <input type="radio" id="male" name="gender" value="male" required>
+                                <label for="male">Мужская</label>
+                                <input type="radio" id="female" name="gender" value="female" required>
+                                <label for="female">Женская</label>
+                            </div>
+    
+                            <label for="course">Курс:</label>
+                            <select id="course" name="course" required>
+                                <option value="1">1 курс</option>
+                                <option value="2">2 курс</option>
+                                <option value="3">3 курс</option>
+                                <option value="4">4 курс</option>
+                            </select>
+    
+                            <label id="group">Группа:</label>
+                                <select id="group" name="group" required>
+                                    <option value="ИСП-П">ИСП-П</option>
+                                    <option value="ИСП-Р">ИСП-Р</option>
+                                    <option value="ИСП-а">ИСП-А</option>
+                                    <option value="СИС">СИС</option>
+                                    <option value="ОИБ">ОИБ</option>
+                                    <option value="ИСП-ИС">ИСП-ИС</option>
+                                </select>
                         </div>
-                        <div>
-                            <label for="event_time">Время мероприятия:</label>
-                            <input type="time" id="event_time" name="event_time" required>
+                        <div class="form-column login-column">
+                            <div class="login-container">
+                                <label for="login">Логин:</label>
+                                <input type="text" id="login" name="login" required>
+    
+                                <label for="password">Пароль:</label>
+                                <input type="text" id="password" name="password" required placeholder="Введите или сгенерируйте пароль">
+                                <button type="button" id="generatePasswordButton" onclick="generatePassword()">Сгенерировать пароль</button>
+                            </div>
                         </div>
                     </div>
-
-                    <label for="location">Место проведения:</label>
-                    <select id="location" name="location" required>
-                        <option value="ПЕРВОМАЙСКАЯ 42, КОРПУС 1">Первомайская 42, корпус 1</option>
-                        <option value="СОВЕТСКИЙ ПР. 137, 2 КОРПУС">Советский проспект 137, корпус 2</option>
-                        <option value="ДРУГОЕ МЕСТО">Другое место</option>
+                    <input type="submit" value="Добавить физорга">
+                </form>
+            </div>
+    
+            <!-- Форма добавление мероприятия -->
+            <div id="eventForm" class="content" style="display: none;">
+                <h2>Добавление мероприятия</h2>
+                <form action="add_event.php" method="POST">
+                    <label for="event_type">Тип мероприятия:</label>
+                    <select id="event_type" name="event_type" required onchange="toggleEventTypeFields()">
+                        <option value="sports">Спортивное</option>
+                        <option value="organizational">Организационное</option>
                     </select>
+    
+                    <div id="sportsFields" style="display: none;">
+                        <label for="sport_type">Вид спорта:</label>
+                        <select id="sport_type" name="sport_type" required>
+                            <option value="football">Футбол</option>
+                            <option value="basketball">Баскетбол 3х3</option>
+                            <option value="volleyball">Волейбол</option>
+                        </select>
+    
+                        <label id="gender">Пол участников:</label>
+                        <div class="radio-group-eventForm">
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            <label for="male">Мужской</label>
+                            <input type="radio" id="female" name="gender" value="female" required>
+                            <label for="female">Женский</label>
+                        </div>
+                    </div>
+    
+                    <div id="commonFields">
+                        <div id="eventNameContainer">
+                            <label for="event_name">Название мероприятия:</label>
+                            <input type="text" id="event_name" name="event_name" required>
+                        </div>
+    
+                        <div class="date-time-container">
+                            <div>
+                                <label for="event_date">Дата мероприятия:</label>
+                                <input type="date" id="event_date" name="event_date" required>
+                            </div>
+                            <div>
+                                <label for="event_time">Время мероприятия:</label>
+                                <input type="time" id="event_time" name="event_time" required>
+                            </div>
+                        </div>
+    
+                        <label for="location">Место проведения:</label>
+                        <select id="location" name="location" required>
+                            <option value="ПЕРВОМАЙСКАЯ 42, КОРПУС 1">Первомайская 42, корпус 1</option>
+                            <option value="СОВЕТСКИЙ ПР. 137, 2 КОРПУС">Советский проспект 137, корпус 2</option>
+                            <option value="ДРУГОЕ МЕСТО">Другое место</option>
+                        </select>
+                    </div>
+    
+                    <input type="submit" value="Добавить мероприятие">
+                </form>
+            </div>
+    
+            <!-- Форма редактирования расписания тренировок -->
+            <div id="editTrainingScheduleForm"  class="content" style="display: none;">
+    
+                <h2>Редактирование расписания тренировок</h2>
+    
+                <form action="edit_schedule.php" method="POST">
+                    <label for="sport_type_schedule">Вид спорта:</label>
+                    <select id="sport_type_schedule" name="sport_type_schedule" required>
+                        <option value="football">Футбол</option>
+                        <option value="basketball">Баскетбол</option>
+                        <option value="volleyball">Волейбол</option>
+                    </select>
+    
+                <div class="date-time-container-TrainingScheduleForm">
+                    <div>
+                        <label for="training_date">Дата:</label>
+                        <input type="date" id="training_date" name="training_date" required>
+                    </div>
+    
+                    <div>
+                        <label for="training_time">Время:</label>
+                        <input type="time" id="training_time" name="training_time" required>
+                    </div>
                 </div>
-
-                <input type="submit" value="Добавить мероприятие">
-            </form>
-        </div>
-
-        <!-- Форма редактирования расписания тренировок -->
-        <div id="editTrainingScheduleForm"  class="content" style="display: none;">
-
-            <h2>Редактирование расписания тренировок</h2>
-
-            <form action="edit_schedule.php" method="POST">
-                <label for="sport_type_schedule">Вид спорта:</label>
-                <select id="sport_type_schedule" name="sport_type_schedule" required>
-                    <option value="football">Футбол</option>
-                    <option value="basketball">Баскетбол</option>
-                    <option value="volleyball">Волейбол</option>
-                </select>
-
-            <div class="date-time-container-TrainingScheduleForm">
-                <div>
-                    <label for="training_date">Дата:</label>
-                    <input type="date" id="training_date" name="training_date" required>
-                </div>
-
-                <div>
-                    <label for="training_time">Время:</label>
-                    <input type="time" id="training_time" name="training_time" required>
-                </div>
+    
+                    <label for="coach_name">ФИО тренера:</label>
+                    <input type="text" id="coach_name" name="coach_name" required>
+    
+                    <input type="submit" value="Редактировать расписание">
+                </form>
+            </div>
+    
+            <!-- Форма добавления новостей -->
+            <div id="newsForm" class="content" style="display: none;">
+                <h2>Добавление новостей</h2>
+                <form id="addNewsForm" method="POST" enctype="multipart/form-data">
+                    <label for="title">Заголовок:</label>
+                    <input type="text" id="title" name="title" required><br><br>
+                
+                    <label for="content">Содержание:</label>
+                    <textarea id="content" name="content" required></textarea><br><br>
+                
+                    <label for="image">Фотография:</label>
+                    <input type="file" id="image" name="image"><br><br>
+                
+                    <button type="submit">Опубликовать новость</button>
+                </form>
+            </div>
+    
+            <!-- Форма добавления наград -->
+            <div id="awardsForm" class="content" style="display: none;">
+                <h2>Добавление наград</h2>
+                <form action="add_award.php" method="POST" enctype="multipart/form-data">
+                    <label for="award_name">Название награды:</label>
+                    <input type="text" id="award_name" name="award_name" required>
+    
+                    <label for="recipient">Получатель награды:</label>
+                    <input type="text" id="recipient" name="recipient" required>
+    
+                    <label for="award_image">Фото:</label>
+                    <input type="file" id="award_image" name="award_image" accept="image/*" required>
+    
+                    <input type="submit" value="Добавить награду">
+                </form>
             </div>
 
-                <label for="coach_name">ФИО тренера:</label>
-                <input type="text" id="coach_name" name="coach_name" required>
-
-                <input type="submit" value="Редактировать расписание">
+            <!-- Форма одобрения заявок -->
+            <form id="approveRequestsForm" class="content" data-action="approve_requests">
+                <h2>Одобрение заявок</h2>
+                <label for="request_id">ID заявки:</label>
+                <input type="text" id="request_id" name="request_id" required>
+                <input type="submit" value="Одобрить заявку">
             </form>
         </div>
+    </div>
 
-        <!-- Форма добавления новостей -->
-        <div id="newsForm" class="content" style="display: none;">
-            <h2>Добавление новостей</h2>
-            <form id="addNewsForm" method="POST" enctype="multipart/form-data">
-                <label for="title">Заголовок:</label>
-                <input type="text" id="title" name="title" required><br><br>
-            
-                <label for="content">Содержание:</label>
-                <textarea id="content" name="content" required></textarea><br><br>
-            
-                <label for="image">Фотография:</label>
-                <input type="file" id="image" name="image"><br><br>
-            
-                <button type="submit">Опубликовать новость</button>
-            </form>
+    <!-- Модальное окно для загрузки фото -->
+    <div id="cropModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Загрузка фото</h2>
+            <canvas id="cropCanvas"></canvas>
+            <input type="range" id="zoomRange" min="1" max="3" step="0.1" value="1">
+            <button id="savePic">Сохранить</button>
         </div>
+    </div>
 
-        <!-- Форма добавления наград -->
-        <div id="awardsForm" class="content" style="display: none;">
-            <h2>Добавление наград</h2>
-            <form action="add_award.php" method="POST" enctype="multipart/form-data">
-                <label for="award_name">Название награды:</label>
-                <input type="text" id="award_name" name="award_name" required>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    const contentArea = document.getElementById('form-container');
 
-                <label for="recipient">Получатель награды:</label>
-                <input type="text" id="recipient" name="recipient" required>
-
-                <label for="award_image">Фото:</label>
-                <input type="file" id="award_image" name="award_image" accept="image/*" required>
-
-                <input type="submit" value="Добавить награду">
-            </form>
-        </div>
-</body>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Функция для показа определенной формы
-        function showContent(formId) {
-            // Скрыть все формы
-            const forms = ['profileForm', 'mediaForm', 'teamForm', 'physOrgForm', 'eventForm', 'editTrainingScheduleForm', 'newsForm', 'awardsForm'];
-            forms.forEach(id => {
-                const form = document.getElementById(id);
-                if (form) {
-                    form.style.display = 'none';
-                }
-            });
-            // Показать нужную форму
-            const formToShow = document.getElementById(formId);
-            if (formToShow) {
-                formToShow.style.display = 'block';
-            }
-        }
-
-        // Функция для закрытия модального окна
-        function closeModal() {
-            const modal = document.getElementById("myModal");
-            if (modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Закрытие модального окна при клике вне его
-        window.onclick = function(event) {
-            const modal = document.getElementById("myModal");
-            if (modal && event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Устанавливаем обработчики событий после загрузки DOM
-        // По умолчанию показываем форму профиля
-        const profileForm = document.getElementById("profileForm");
-        if (profileForm) {
-            profileForm.style.display = "block";
-        }
-
-        // Привязываем кнопки к функциям показа соответствующих форм
-        const buttons = [
-            { selector: 'button[data-action="showMediaForm"]', formId: 'mediaForm' },
-            { selector: 'button[data-action="showTeamForm"]', formId: 'teamForm' },
-            { selector: 'button[data-action="showPhysOrgForm"]', formId: 'physOrgForm' },
-            { selector: 'button[data-action="showEventForm"]', formId: 'eventForm' },
-            { selector: 'button[data-action="showEditTrainingScheduleForm"]', formId: 'editTrainingScheduleForm' },
-            { selector: 'button[data-action="showNewsForm"]', formId: 'newsForm' },
-            { selector: 'button[data-action="showAwardsForm"]', formId: 'awardsForm' }
-        ];
-
-        buttons.forEach(button => {
-            const buttonElement = document.querySelector(button.selector);
-            if (buttonElement) {
-                buttonElement.addEventListener('click', () => showContent(button.formId));
-            }
+    // Function to show a form
+    function showForm(formId) {
+        const forms = contentArea.querySelectorAll('.content');
+        forms.forEach(form => {
+            form.style.display = 'none';
         });
-
-        // Генерация пароля
-        function generatePassword() {
-            const length = 10;
-            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            let password = "";
-            for (let i = 0; i < length; i++) {
-                password += charset.charAt(Math.floor(Math.random() * charset.length));
-            }
-            const passwordInput = document.getElementById("password");
-            if (passwordInput) {
-                passwordInput.value = password;
-            }
+        const formToShow = document.getElementById(formId);
+        if (formToShow) {
+            formToShow.style.display = 'block';
         }
+    }
 
-        // Обработчик нажатия на кнопку генерации пароля
-        const generatePasswordButton = document.getElementById("generatePasswordButton");
-        if (generatePasswordButton) {
-            generatePasswordButton.addEventListener("click", function() {
-                generatePassword();
-            });
-        }
-
-        // Пример отправки данных в API для добавления физорга
-        const physOrgForm = document.getElementById('physOrgForm');
-        if (physOrgForm) {
-            physOrgForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(physOrgForm);
-
-                fetch('http://127.0.0.1:5000/api/add_physorg', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        alert('Физорг успешно добавлен');
-                        // Здесь можно дополнительно сбросить форму или показать другой ответ
-                        physOrgForm.reset(); // Сброс формы
-                    } else {
-                        alert('Ошибка при добавлении физорга');
-                    }
-                })
-                .catch(error => console.error('Ошибка при добавлении физорга:', error));
-            });
-        }
-
-        // Обновление участников команды
-        function updateTeamMembers() {
-            const sportType = document.querySelector("#teamForm select[name='sport_type']").value;
-            const membersContainer = document.getElementById("team_members_container");
-            if (membersContainer) {
-                membersContainer.innerHTML = '<label for="team_members">Игроки команды:</label><br>';
-
-                let memberCount;
-                if (sportType === "football") { memberCount = 5; }
-                else if (sportType === "basketball") { memberCount = 3; }
-                else if (sportType === "volleyball") { memberCount = 6; }
-                else { memberCount = 1; }
-
-                for (let i = 1; i <= memberCount; i++) {
-                    const input = document.createElement("input");
-                    input.type = "text";
-                    input.name = "team_members[]";
-                    input.placeholder = `Игрок команды ${i}`;
-                    input.required = true;
-                    membersContainer.appendChild(input);
-                    membersContainer.appendChild(document.createElement("br"));
-                }
-            }
-        }
-
-        // Обновление медиа формы
-        function updateMediaForm() {
-            const mediaFilesContainer = document.getElementById("media_files_container");
-            if (mediaFilesContainer) {
-                mediaFilesContainer.innerHTML = '<label for="media_files">Файлы:</label>';
-
-                const input = document.createElement("input");
-                input.type = "file";
-                input.id = "media_files";
-                input.name = "media_files[]";
-                input.multiple = true;
-                input.required = true;
-                mediaFilesContainer.appendChild(input);
-                mediaFilesContainer.appendChild(document.createElement("br"));
-                mediaFilesContainer.appendChild(document.createElement("br"));
-            }
-        }
-
-        // Управление полями в зависимости от типа мероприятия
-        function toggleEventTypeFields() {
-            var eventType = document.getElementById('event_type').value;
-            var sportsFields = document.getElementById('sportsFields');
-            var eventNameField = document.getElementById('event_name').parentElement;
-
-            // Показываем или скрываем поля в зависимости от типа мероприятия
-            if (eventType === 'sports') {
-                sportsFields.style.display = 'block';
-                eventNameField.style.display = 'none';
-            } else {
-                sportsFields.style.display = 'none';
-                eventNameField.style.display = 'block';
-            }
-        }
-
-        // Обработчик для показа формы профиля
-        const loginButton = document.getElementById("loginButton");
-        if (loginButton) {
-            loginButton.addEventListener("click", function() {
-                const profileForm = document.getElementById("profileForm");
-                // Переключаем видимость формы профиля
-                profileForm.style.display = profileForm.style.display === "none" || profileForm.style.display === "" ? "block" : "none";
-                // Скрываем другие формы, если они открыты
-                const forms = ['mediaForm', 'teamForm', 'physOrgForm', 'eventForm', 'editTrainingScheduleForm', 'newsForm', 'awardsForm'];
-                forms.forEach(id => {
-                    const form = document.getElementById(id);
-                    if (form) {
-                        form.style.display = 'none';
-                    }
-                });
-            });
-        }
-
-        // Загрузка данных пользователя
-        fetch('/api/user_data')
-            .then(response => response.json())
-            .then(data => {
-                if (data.surname) document.getElementById('surname').textContent = data.surname;
-                if (data.name) document.getElementById('first_name').textContent = data.name;
-                if (data.patronymic) document.getElementById('middle_name').textContent = data.patronymic;
-                if (data.gender) document.getElementById('gender').textContent = data.gender;
-                if (data.group) document.getElementById('group').textContent = data.group;
-                if (data.role) document.getElementById('role').textContent = data.role;
-            })
-            .catch(error => console.error('Error fetching user data:', error));
-
-        // Загрузка фото профиля
-        fetch('/api/profile_picture')
-            .then(response => {
-                if (response.ok) {
-                    return response.blob();
-                }
-                throw new Error('Network response was not ok.');
-            })
-            .then(blob => {
-                const url = URL.createObjectURL(blob);
-                const previewImage = document.getElementById('previewImage');
-                if (previewImage) {
-                    previewImage.src = url;
-                }
-            })
-            .catch(error => console.error('Error fetching profile picture:', error));
-
-        // Обработка изменения фото профиля
-        const profilePictureInput = document.getElementById('profilePictureInput');
-        if (profilePictureInput) {
-            profilePictureInput.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                const formData = new FormData();
-                formData.append('profile_picture', file);
-
-                fetch('/api/profile_picture', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Profile picture updated successfully');
-                        location.reload();
-                    } else {
-                        alert('Error updating profile picture');
-                    }
-                })
-                .catch(error => console.error('Error updating profile picture:', error));
-            });
-        }
-
-        // Обработка отправки формы добавления новости
-        const addNewsForm = document.getElementById('addNewsForm');
-        if (addNewsForm) {
-            addNewsForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(addNewsForm);
-
-                // Логирование данных формы перед отправкой
-                for (let pair of formData.entries()) {
-                    console.log(pair[0] + ': ' + pair[1]);
-                }
-
-                fetch('http://127.0.0.1:5000/api/add_news', {
-                    method: 'POST', // Убедитесь, что используется метод POST
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        console.log('Новость успешно добавлена');
-                        addNewsForm.reset();
-                        window.location.href = '/'; // Перенаправление на страницу index.html
-                    } else {
-                        console.error('Ошибка при добавлении новости:', data.error);
-                    }
-                })
-                .catch(error => console.error('Ошибка при добавлении новости:', error));
-            });
-        }
-
-        // Загрузка новостей
-        function fetchNews() {
-            fetch('/api/get_news', {
-                method: 'GET'
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Полученные новости:', data.news);
-                const newsContainer = document.getElementById('news-container');
-                if (newsContainer) {
-                    newsContainer.innerHTML = '';
-                    data.news.forEach(news => {
-                        const newsCard = document.createElement('div');
-                        newsCard.className = 'news_card';
-                        newsCard.innerHTML = `
-                            <h2>${news.title}</h2>
-                            ${news.image ? `<img src="${news.image}" alt="Image" style="max-width: 100%; max-height: 200px;">` : ''}
-                            <button class="read-more-button" data-news-id="${news.id}">Подробнее</button>
-                        `;
-                        newsContainer.appendChild(newsCard);
-                    });
-
-                    document.querySelectorAll('.read-more-button').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const newsId = button.getAttribute('data-news-id');
-                            fetch(`/api/get_news_by_id/${newsId}`)
-                                .then(response => response.json())
-                                .then(news => {
-                                    document.getElementById('modalTitle').textContent = news.title;
-                                    document.getElementById('modalContent').textContent = news.description;
-                                    document.getElementById('modalImage1').src = news.image || '';
-                                    document.getElementById('modalImage1').style.display = news.image ? 'block' : 'none';
-                                    document.getElementById('newsModal').style.display = 'block';
-                                });
-                        });
-                    });
-                }
-            })
-            .catch(error => console.error('Error fetching news data:', error));
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            document.getElementById('newsModal').style.display = 'none';
-        }
-
-        // Close the modal if the user clicks outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('newsModal');
-            if (modal && event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Пример вызова функции для получения новостей при загрузке страницы
-        fetchNews();
-
-        // Пример отправки данных в API для добавления награды
-        const awardsForm = document.getElementById('awardsForm');
-        if (awardsForm) {
-            awardsForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(awardsForm);
-
-                fetch('http://127.0.0.1:5000/api/add_award', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Награда успешно добавлена');
-                    } else {
-                        alert('Ошибка при добавлении награды');
-                    }
-                })
-                .catch(error => console.error('Error adding award:', error));
-            });
-        }
+    // Event listeners for sidebar buttons
+    document.querySelectorAll('.sidebar button').forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.getAttribute('data-action');
+            let formId;
+            if (action === 'showTeamForm') formId = 'teamForm';
+            else if (action === 'showPhysOrgForm') formId = 'physOrgForm';
+            else if (action === 'showMediaForm') formId = 'mediaForm';
+            else if (action === 'showEventForm') formId = 'eventForm';
+            else if (action === 'showEditTrainingScheduleForm') formId = 'editTrainingScheduleForm';
+            else if (action === 'showNewsForm') formId = 'newsForm';
+            else if (action === 'showAwardsForm') formId = 'awardsForm';
+            else if (action === 'showApproveRequests') formId = 'approveRequestsForm';
+            showForm(formId);
+        });
     });
-</script>
+
+    // Logout button event listener
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        fetch('/api/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'login.html';
+            } else {
+                alert('Ошибка при выходе');
+            }
+        })
+        .catch(error => console.error('Error logging out:', error));
+    });
+
+    // Form submission handling
+    document.querySelectorAll('#form-container form').forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const action = form.getAttribute('action');
+
+            fetch(action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Данные успешно сохранены');
+                    form.reset();
+                } else {
+                    alert('Ошибка при сохранении данных');
+                }
+            })
+            .catch(error => console.error('Ошибка:', error));
+        });
+    });
+
+    // Update team members based on sport type
+    function updateTeamMembers() {
+        const sportType = document.querySelector("#teamForm select[name='sport_type']").value;
+        const membersContainer = document.getElementById("team_members_container");
+        if (membersContainer) {
+            membersContainer.innerHTML = '<label>Игроки команды:</label><br>';
+
+            let memberCount;
+            switch (sportType) {
+                case "football":
+                    memberCount = 5;
+                    break;
+                case "basketball":
+                    memberCount = 3;
+                    break;
+                case "volleyball":
+                    memberCount = 6;
+                    break;
+                case "table_tennis":
+                case "skipping":
+                case "arm_wrestling":
+                case "chess":
+                case "checkers":
+                case "badminton":
+                    memberCount = 1;
+                    membersContainer.innerHTML += '<button type="button" onclick="addTeamMember()">Добавить участника</button>';
+                    break;
+                default:
+                    memberCount = 1;
+            }
+
+            for (let i = 1; i <= memberCount; i++) {
+                const input = document.createElement("input");
+                input.type = "text";
+                input.name = "team_members[]";
+                input.placeholder = `Игрок команды ${i}`;
+                input.required = true;
+                membersContainer.appendChild(input);
+                membersContainer.appendChild(document.createElement("br"));
+            }
+        }
+    }
+
+    // Function to add a team member
+    window.addTeamMember = function() {
+        const membersContainer = document.getElementById("team_members_container");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = "team_members[]";
+        input.placeholder = `Игрок команды ${membersContainer.children.length / 2 + 1}`;
+        input.required = true;
+        membersContainer.appendChild(input);
+        membersContainer.appendChild(document.createElement("br"));
+    }
+
+    // Initial call to update team members
+    updateTeamMembers();
+
+    // Fetch user data
+    fetch('/api/user_data')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('surname').textContent = data.surname;
+            document.getElementById('first_name').textContent = data.name;
+            document.getElementById('middle_name').textContent = data.patronymic;
+            document.getElementById('position').textContent = data.position === 1 ? 'Администратор' : 'Физорг';
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+
+    // Fetch profile picture
+    fetch('/api/profile_picture')
+        .then(response => {
+            if (response.ok) {
+                return response.blob();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            document.getElementById('previewImage').src = url;
+        })
+        .catch(error => console.error('Error fetching profile picture:', error));
+
+    // Handle profile picture change
+    document.getElementById('profilePictureInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = function() {
+                const cropCanvas = document.getElementById('cropCanvas');
+                const ctx = cropCanvas.getContext('2d');
+                cropCanvas.width = 300;
+                cropCanvas.height = 300;
+                ctx.drawImage(img, 0, 0, 300, 300);
+                document.getElementById('cropModal').style.display = 'block';
+            }
+        }
+
+        reader.readAsDataURL(file);
+    });
+
+    // Close modal
+    document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById('cropModal').style.display = 'none';
+    });
+
+    // Save cropped image
+    document.getElementById('savePic').addEventListener('click', function() {
+        const cropCanvas = document.getElementById('cropCanvas');
+        const croppedImage = cropCanvas.toDataURL('image/jpeg');
+        const formData = new FormData();
+        formData.append('profile_picture', croppedImage);
+
+        fetch('/api/profile_picture', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Ошибка при обновлении фото профиля');
+            }
+        })
+        .catch(error => console.error('Error updating profile picture:', error));
+
+        document.getElementById('cropModal').style.display = 'none';
+    });
+
+    // Delete profile picture
+    document.getElementById('deleteProfilePictureButton').addEventListener('click', function() {
+        fetch('/api/delete_profile_picture', {
+            method: 'POST',
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('previewImage').src = 'static/style/icon-placeholder.png';
+            } else {
+                alert('Ошибка при удалении фото профиля');
+            }
+        })
+        .catch(error => console.error('Error deleting profile picture:', error));
+    });
+
+    // Set inactivity timer
+    const inactivityDuration = 3600000; 
+    let inactivityTimeout;
+
+    function startInactivityTimer() {
+        inactivityTimeout = setTimeout(logoutDueToInactivity, inactivityDuration);
+    }
+
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimeout);
+        startInactivityTimer();
+    }
+
+    function logoutDueToInactivity() {
+        fetch('/api/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'login.html';
+            } else {
+                alert('Ошибка при автоматическом выходе');
+            }
+        })
+        .catch(error => console.error('Error logging out due to inactivity:', error));
+    }
+
+    // Reset timer on user activity
+    document.addEventListener('mousemove', resetInactivityTimer);
+    document.addEventListener('keypress', resetInactivityTimer);
+    document.addEventListener('click', resetInactivityTimer);
+
+    // Start timer on page load
+    startInactivityTimer();
+});
+
+    </script>
+</body>
 </html>
