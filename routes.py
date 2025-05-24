@@ -1,8 +1,7 @@
-# routes.py
 import os
-
 from flask import Blueprint, jsonify, request, session, render_template
-from models import db, User, Command, Measure, ScheduleSections, News, Award
+from werkzeug.security import generate_password_hash, check_password_hash
+from models import db, User, Command, Event, ScheduleSections, News, Award, SportType, MeasureType, Place, Statistic, Notification, Registration, Feedback, Partners
 
 api = Blueprint('api', __name__)
 
@@ -12,10 +11,8 @@ def login():
     user_login = data.get('login')
     password = data.get('password')
 
-    user = User.query.filter_by(login=user_login, password=password).first()
-    if user:
-        user.is_authenticated = True
-        db.session.commit()
+    user = User.query.filter_by(login=user_login).first()
+    if user and check_password_hash(user.password, password):
         session['user_id'] = user.id
         return jsonify({'success': True, 'message': 'Login successful'})
     else:
@@ -50,7 +47,7 @@ def upload():
         file.save(os.path.join(upload_dir, file.filename))
     return jsonify({'success': True, 'message': 'Media uploaded successfully'})
 
-@api.route('/add_team', methods=['POST'])
+@api.route('/add_command', methods=['POST'])
 def add_team():
     data = request.form
     new_team = Command(
@@ -76,7 +73,7 @@ def add_physorg():
         course=data.get('course'),
         group=data.get('group'),
         login=data.get('login'),
-        password=data.get('password')
+        password=generate_password_hash(data.get('password'), method='pbkdf2:sha256')
     )
     db.session.add(new_physorg)
     db.session.commit()
@@ -85,7 +82,7 @@ def add_physorg():
 @api.route('/add_event', methods=['POST'])
 def add_event():
     data = request.form
-    new_event = Measure(
+    new_event = Event(
         event_type=data.get('event_type'),
         sport_type=data.get('sport_type'),
         gender=data.get('gender'),
