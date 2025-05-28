@@ -1,3 +1,4 @@
+/* Основные стили страницы */
 html, body {
     height: 100%;
     margin: 0;
@@ -16,6 +17,7 @@ body.dark-mode {
     color: #ffffff;
 }
 
+/* Заголовок и навигация */
 header {
     display: flex;
     justify-content: space-between;
@@ -79,26 +81,24 @@ nav a::after {
     pointer-events: none;
 }
 
+/* Иконки для навигации */
 nav a.news {
     background-image: url(../style/iconNews.png);
 }
-
 nav a.team {
     background-image: url(../style/iconTeam.png);
 }
-
 nav a.media {
     background-image: url(../style/iconMedia.png);
 }
-
 nav a.iconMeasure {
     background-image: url(../style/iconMeasure.png);
 }
-
 nav a.contact {
     background-image: url(../style/iconContact.png);
 }
 
+/* Стиль для иконки аккаунта */
 .account-link {
     display: flex;
     align-items: center;
@@ -116,19 +116,18 @@ nav a.contact {
     width: 25px;
 }
 
+/* Общие стили для текста */
 p {
     font-family: "Inter Tight", sans-serif;
     font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
     font-weight: bold;
     color: #333333;
 }
-
 body.dark-mode p {
     color: #ffffff;
 }
 
+/* Стиль для контейнера входа */
 .login-container {
     background-color: #ffffff;
     padding: 20px;
@@ -142,12 +141,10 @@ body.dark-mode p {
     border: 2px solid #dc3545;
     transition: background-color 0.3s, color 0.3s;
 }
-
 body.dark-mode .login-container {
     background-color: #495057;
     color: #ffffff;
 }
-
 .login-container form {
     margin-top: 80px;
     margin-bottom: 350px;
@@ -155,18 +152,15 @@ body.dark-mode .login-container {
     flex-direction: column;
     align-items: center;
 }
-
 .login-container label {
     margin-bottom: 5px;
     font-weight: bold;
     color: #333333;
     font-size: 30px;
 }
-
 body.dark-mode .login-container label {
     color: #ffffff;
 }
-
 .login-container input {
     margin-bottom: 15px;
     padding: 10px;
@@ -181,12 +175,10 @@ body.dark-mode .login-container label {
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
 }
-
 body.dark-mode .login-container input {
     background-color: #343a40;
     color: #ffffff;
 }
-
 .login-container button {
     background-color: #dc3545;
     color: white;
@@ -199,22 +191,22 @@ body.dark-mode .login-container input {
     transition: background-color 0.3s;
     width: 300px;
 }
-
 .login-container button:hover {
     background-color: #ffc107;
 }
 
+/* Стиль для всплывающих сообщений */
 .flashes {
     list-style-type: none;
     padding: 0;
     color: #333333;
     font-weight: bold;
 }
-
 body.dark-mode .flashes {
     color: #ffffff;
 }
 
+/* Основной контент */
 main {
     flex: 1;
     display: flex;
@@ -222,6 +214,7 @@ main {
     align-items: center;
 }
 
+/* Подвал сайта */
 footer {
     text-align: center;
     background-color: #dc3545;
@@ -230,6 +223,7 @@ footer {
     height: 3%;
 }
 
+/* Кнопка переключения темы */
 .theme-toggle {
     background: none; 
     border: none; 
@@ -237,10 +231,59 @@ footer {
     cursor: pointer; 
     position: relative; 
     left: -150px; 
-  }
-  
-  .theme-toggle img {
+}
+.theme-toggle img {
     width: 100px; 
     height: 100px; 
-  }
-  
+}
+.theme-toggle:focus,
+.theme-toggle:hover {
+    outline: none;
+    box-shadow: none;
+}
+
+/* --- Добавленные стили для блока "ВЫПУСКНАЯ КВАЛИФИКАЦИОННАЯ РАБОТА" --- */
+
+.project-title-container {
+    background-color: #6f42c1; /* Фиолетовый из бренд-бука */
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    text-align: center;
+    margin: 50px auto;
+    max-width: 90%;
+}
+
+.project-title {
+    font-family: "Arial Rounded MT Bold", "Inter Tight", sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff; /* Белый цвет текста */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.project-subtitle {
+    font-family: "Arial", sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #d4f56a; /* Кислотно-зеленый для акцента */
+    margin-top: 10px;
+}
+
+.organization-name {
+    font-family: "Arial Rounded MT Bold", "Inter Tight", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Эффект при наведении на контейнер */
+.project-title-container:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+    transition: all 0.3s ease-in-out;
+}

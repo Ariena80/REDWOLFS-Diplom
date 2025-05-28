@@ -11,150 +11,210 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/dark theme.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            height: 100%;
+        }
 
+        .measure-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+            margin-left: 20px;
+        }
+
+        .measure-links {
+            display: flex;
+            flex-direction: row;
+            justify-content: baseline;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .measure-link {
+            background-color: #5a0888;
+            border: 6px solid #48066e5d;
+            border-radius: 6%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            font-family: "Open Sans", Arial, sans-serif;
+            font-size: 16px;
+            height: 30px;
+            line-height: 30px;
+            margin: 10px;
+            padding: 0;
+            text-align: center;
+            text-decoration: none;
+            width: 20%;
+        }
+
+        .measure {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            margin-left: 200px;
+        }
+
+        .measure-article {
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+
+        .measure-card {
+            width: 100%;
+            height: 170px;
+            background-color: #6b2376;
+            color: #ffffff;
+            border: 6px solid white;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+            padding: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .statistics-section {
+            flex: 1;
+            margin-top: 20px;
+            margin-right: 20px;
+            width: 60%;
+        }
+
+        .calendar {
+            width: 80%;
+            height: max-content;
+            margin-left: 70px;
+            margin-bottom: 20px;
+            background-color: #5a0888;
+            color: white;
+            border: 3px solid white;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .statistics-table {
+            width: 70%;
+            border-collapse: collapse;
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 6%;
+            margin: 20px auto;
+        }
+
+        .statistics-table th, .statistics-table td {
+            border: 10px solid transparent;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .statistics-table th {
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .statistics-table th:nth-child(1), .statistics-table td:nth-child(1) {
+            width: 10%;
+        }
+
+        .statistics-table th:nth-child(2), .statistics-table td:nth-child(2) {
+            width: 50%;
+        }
+
+        .statistics-table tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .rating {
+            margin-left: 100px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            background-color: #6b237654;
+            color: white;
+            border-radius: 6%;
+            padding: 10px;
+            width: 70%;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .calendar-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calendar-nav button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .calendar-day:hover {
+            background-color: #e0e0e0;
+        }
+
+        .calendar-day.selected {
+            background-color: #5a0888;
+            color: white;
+        }
+
+    </style>
 </head>
-<style>
-    .container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-top: 20px;
-        height: 100%;
-    }
-
-    .measure-container {
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-        width: 20%;
-        margin-left: 20px;
-    }
-
-    .measure-links {
-        display: flex;
-        flex-direction: row;
-        justify-content: baseline;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        
-    }
-
-    .measure-link {
-        background-color: #5a0888;
-        border: 6px solid #48066e5d;
-        border-radius: 6%;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        display: block;
-        font-family: "Open Sans", Arial, sans-serif;
-        font-size: 16px;
-        height: 30px;
-        line-height: 30px;
-        margin: 10px;
-        padding: 0;
-        text-align: center;
-        text-decoration: none;
-        width: 20%;
-    }
-
-    .measure {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        width: 70%; 
-        margin-left: 200px;
-    }
-
-    .measure-article {
-        display: flex;
-        flex-direction: column;
-        margin: 20px 0;
-    }
-
-    .measure-card {
-        width: 100%;
-        height: 170px;
-        background-color: #6b2376;
-        color: #ffffff;
-        border: 6px solid white;
-        margin: 10px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 13px;
-        padding: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .statistics-section {
-        flex: 1;
-        margin-top: 20px;
-        margin-right: 20px;
-        width: 60%; 
-    }
-
-    .calendar {
-        width: 80%;
-        height: max-content;
-        margin-left: 70px;
-        margin-bottom: 20px;
-        background-color: #5a0888;
-        color: white;
-        border: 3px solid white;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .statistics-table {
-        width: 70%;
-        border-collapse: collapse;
-        background-color: transparent;
-        color: #ffffff;
-        font-size: 20px;
-        font-weight: bold;
-        border-radius: 6%;
-        margin: 20px auto;
-    }
-
-    .statistics-table th, .statistics-table td {
-        border: 10px solid transparent;
-        padding: 5px;
-        text-align: center;
-    }
-
-    .statistics-table th {
-        background-color: transparent;
-        color: #ffffff;
-        font-size: 30px;
-        font-weight: bold;
-    }
-
-    .statistics-table th:nth-child(1), .statistics-table td:nth-child(1) {
-        width: 10%;
-    }
-
-    .statistics-table th:nth-child(2), .statistics-table td:nth-child(2) {
-        width: 50%;
-    }
-
-    .statistics-table tbody tr:nth-child(even) {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .rating {
-        margin-left: 100px;
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 24px;
-        background-color: #6b237654;
-        color: white;
-        border-radius: 6%;
-        padding: 10px;
-        width: 70%;
-    }
-</style>
 <body>
     <header>
         <img src="{{ url_for('static', filename='style/logotip.png') }}" alt="Логотип" height="100%" width="4%">
@@ -167,9 +227,8 @@
             <a href="{{ url_for('login') }}" class="account-link" data-text="Профиль"></a>
         </nav>
         <button id="theme-toggle" class="theme-toggle">
-  <img id="theme-icon" src="static/style/White Mode.png" alt="Иконка светлой темы">
-  
-</button>
+            <img id="theme-icon" src="static/style/White Mode.png" alt="Иконка светлой темы">
+        </button>
     </header>
 
     <div class="container">
@@ -197,9 +256,26 @@
 
         <section class="statistics-section">
             <div class="calendar">
-                <h2>Календарь</h2>
-                <p>Здесь будет календарь</p>
+                <div class="calendar-header">
+                    <div class="calendar-title" id="calendar-title">Календарь</div>
+                    <div class="calendar-nav">
+                        <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <div class="calendar-month-year" id="calendar-month-year">Месяц Год</div>
+                        <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="calendar-weekdays">
+                    <div>Пн</div>
+                    <div>Вт</div>
+                    <div>Ср</div>
+                    <div>Чт</div>
+                    <div>Пт</div>
+                    <div>Сб</div>
+                    <div>Вс</div>
+                </div>
+                <div class="calendar-days" id="calendar-days"></div>
             </div>
+            
             <h2 class="rating">Статистика</h2>
             <table class="statistics-table">
                 <thead>
@@ -229,5 +305,72 @@
     <footer>
         <p>&COPY;Arieshka, 2024.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarTitle = document.getElementById('calendar-title');
+            const calendarMonthYear = document.getElementById('calendar-month-year');
+            const calendarDays = document.getElementById('calendar-days');
+            const prevMonthButton = document.getElementById('prev-month');
+            const nextMonthButton = document.getElementById('next-month');
+            const eventsContainer = document.getElementById('events-container');
+
+            let currentDate = new Date();
+
+            function renderCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                calendarMonthYear.textContent = `${new Intl.DateTimeFormat('ru-RU', { month: 'long' }).format(currentDate)} ${year}`;
+
+                let daysHtml = '';
+
+                for (let i = 0; i < firstDay; i++) {
+                    daysHtml += '<div></div>';
+                }
+
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const day = new Date(year, month, i);
+                    const dayString = day.toISOString().split('T')[0];
+                    daysHtml += `<div class="calendar-day" data-date="${dayString}">${i}</div>`;
+                }
+
+                calendarDays.innerHTML = daysHtml;
+
+                renderEvents();
+            }
+
+            function renderEvents() {
+                const events = JSON.parse(localStorage.getItem('events')) || [];
+                eventsContainer.innerHTML = '';
+
+                events.forEach(event => {
+                    const eventElement = document.createElement('div');
+                    eventElement.className = 'event-item';
+                    eventElement.innerHTML = `
+                        <h3>${event.title}</h3>
+                        <p>${event.description}</p>
+                        <p>${new Date(event.date).toLocaleDateString()}</p>
+                    `;
+                    eventsContainer.appendChild(eventElement);
+                });
+            }
+
+            prevMonthButton.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+
+            nextMonthButton.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+
+            renderCalendar();
+        });
+    </script>
 </body>
 </html>

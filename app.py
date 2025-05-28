@@ -14,7 +14,7 @@ from sqlalchemy import text
 
 # Инициализация Flask приложения
 app = Flask(__name__, template_folder='templates', static_folder='static')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://arien:12345678@fizorger?driver=ODBC+Driver+17+for+SQL+Server'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://@DESKTOP-VF9RI0P\SQLEXPRESS/FIZORGER-DB?driver=ODBC+Driver+17+for+SQL+Server'
 app.config['SECRET_KEY'] = 'dde8a6ba4fdf7dbecb55874b5c03d02fd575d5ad4623e70c'
 
 # Инициализация SQLAlchemy
@@ -129,6 +129,10 @@ def home():
 @app.route('/media')
 def media():
     return render_template('media.html')
+
+@app.route('/media_video')
+def media_video():
+    return render_template('media_video.html')
 
 @app.route('/team')
 def team():
@@ -460,6 +464,6 @@ def add_award():
 if __name__ == '__main__':
     if os.getenv('FLASK_ENV') != 'testing':
         update_user_password('admin', 'admin')
-        update_user_password('isp-22r', '12345678')
+        update_user_password('isp-22p', '12345678')
 
     app.run(debug=True)

@@ -5,292 +5,354 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Красные волки</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='style/icon.ico') }}" type="image-x-icon" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='style/icon.ico') }}" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/animation.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/dark theme.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
 
-<style>
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 80px;
+        }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    margin-bottom: 80px; /* Отступ от футера */
-}
+        .left-content {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.left-content {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.right-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .news-section {
+            width: 90%;
+            margin-top: 5px;
+        }
 
-.news-section {
-    width: 90%;
-    margin-top: 5px;
-}
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
 
-.news-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
+        .news_card {
+            width: 450px;
+            height: 450px;
+            background-color: #6b2376;
+            color: #ffffff;
+            border: 6px solid #5a0888;
+            border-radius: 10px;
+            margin: 5px 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            font-size: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+            transform-origin: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
 
-.news_card {
-    width: 450px;
-    height: 450px;
-    background-color: #6b2376;
-    color: #ffffff;
-    border: 6px solid #5a0888;
-    border-radius: 10px;
-    margin: 5px 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    font-size: 16px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, transform 0.3s;
-    transform-origin: center;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-}
+        .news_card h2 {
+            margin-bottom: 20px;
+            color: white;
+            width: 95%;
+            text-align: center;
+            font-size: 24px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            margin-right: 30px;
+        }
 
-.news_card h2 {
-    margin-bottom: 20px;
-    color: white;
-    width: 95%;
-    text-align: center;
-    font-size: 24px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 10px;
-    margin-right: 30px;
-}
+        .news_card p {
+            margin: 0;
+            font-size: 16px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            line-clamp: 5;
+            box-orient: vertical;
+            margin-bottom: 20px;
+            flex: 1;
+        }
 
-.news_card p {
-    margin: 0;
-    font-size: 16px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    line-clamp: 5;
-    box-orient: vertical;
-    margin-bottom: 20px;
-    flex: 1;
-}
+        .news_card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            object-fit: cover;
+        }
 
-.news_card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    object-fit: cover;
+        .read-more-button {
+            background-color: transparent;
+            border: none;
+            color: #3e018f;
+            text-decoration: underline;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-align: right;
+            display: block;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            right: 0;
+            z-index: 2;
+            font-weight: bold;
+        }
 
-}
+        .read-more-button:hover {
+            color: #480177;
+        }
 
-.read-more-button {
-    background-color: transparent;
-    border: none;
-    color: #3e018f;
-    text-decoration: underline;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    text-align: right;
-    display: block;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
-    font-weight: bold;
-}
+        .calendar {
+            width: 400px; /* Фиксированная ширина */
+            height: 400px; /* Фиксированная высота */
+            margin: 20px 0;
+            background-color: #5a0888;
+            color: white;
+            border: 3px solid white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-.read-more-button:hover {
-    color: #480177;
-}
+        .statistics-section {
+            width: 100%;
+            margin-top: 20px;
+        }
 
-.calendar {
-    width: 90%;
-    margin: 20px 0;
-    background-color: #5a0888;
-    color: white;
-    border: 3px solid white;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
+        .statistics-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(0,0,0,0.1);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
 
-.statistics-section {
-    width: 90%;
-    margin-top: 20px;
-}
+        .statistics-table th, .statistics-table td {
+            border: 2px solid rgba(0,0,0,0.5);
+            padding: 10px;
+            text-align: center;
+        }
 
-.statistics-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: rgba(0,0,0,0.1);
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 10px;
-    margin: 20px auto;
-}
+        .statistics-table th {
+            background-color: #5a0888;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-.statistics-table th, .statistics-table td {
-    border: 2px solid rgba(0,0,0,0.5);
-    padding: 10px;
-    text-align: center;
-}
+        .statistics-table tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
-.statistics-table th {
-    background-color: #5a0888;
-    color: #ffffff;
-    font-size: 24px;
-    font-weight: bold;
-}
+        .rating {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            background-color: #fe1c454b;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+        }
 
-.statistics-table tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: white;
+        }
 
-.rating {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    background-color: #fe1c454b;
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-}
+        p {
+            font-size: 1em;
+            margin: 10px 0;
+        }
 
-h1 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    font-weight: bold;
-    color: white;
-}
+        .slogan {
+            font-size: 18px;
+            font-weight: bold;
+            font-style: oblique;
+            color: white;
+        }
 
-p {
-    font-size: 1em;
-    margin: 10px 0;
-}
+        .welcome {
+            font-size: 24px;
+            font-weight: bolder;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+        }
 
-.slogan {
-    font-size: 18px;
-    font-weight: bold;
-    font-style: oblique;
-    color: white;
-}
+        .present-container {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 20px;
+            text-decoration: underline;
+            color: white;
+            margin-top: 20px;
+        }
 
-.welcome {
-    font-size: 24px;
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-    color: white;
-}
+        .present {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+            margin-left: 60px;
+            text-align: left;
+        }
 
-.present-container {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 20px;
-    text-decoration: underline;
-    color: white;
-    margin-top: 20px;
-}
+        .present p {
+            margin: 5px 0;
+        }
 
-.present {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 18px;
-    margin-left: 60px;
-    text-align: left;
-}
+        footer {
+            background-color: #5a0888;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
 
-.present p {
-    margin: 5px 0;
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-footer {
-    background-color: #5a0888;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
+        .modal-content {
+            background-color: #5a0888;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            color: white;
+        }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
 
-.modal-content {
-    background-color: #5a0888;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 10px;
-    color: white;
-}
+        .calendar-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
 
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+        .calendar-nav button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+        }
 
-/* Добавляем отступ снизу для основного контейнера */
-.main-content {
-    padding-bottom: 60px; /* Высота футера */
-}
-</style>
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            aspect-ratio: 1; /* Квадратные дни */
+        }
+
+        .calendar-day:hover {
+            background-color: #e0e0e0;
+        }
+
+        .calendar-day.selected {
+            background-color: #5a0888;
+            color: white;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .main-content {
+            padding-bottom: 60px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -304,21 +366,67 @@ footer {
             <a href="{{ url_for('login') }}" class="account-link" data-text="Профиль"></a>
         </nav>
         <button id="theme-toggle" class="theme-toggle">
-  <img id="theme-icon" src="static/style/White Mode.png" alt="Иконка светлой темы">
-</button>
+            <img id="theme-icon" src="static/style/White Mode.png" alt="Иконка светлой темы">
+        </button>
     </header>
 
-    <div class="main-content">
+        <div class="main-content">
         <div class="container">
             <div class="left-content">
                 <div class="news-section">
+                    <div class="news-container" id="news-container">
+                        <div class="news_card" id="news_card_1" style="background-image: url('{{ url_for('static', filename='uploads/armwrestling.jpg') }}')">
+                            <div class="news_content">
+                                <h2>Турнир по Армрестлингу</h2>
+                                <p>13 декабря в 12.20 в 1 корпусе состоится турнир по армрестлингу среди юношей в рамках Всероссийского проекта АССК России «УниверЛига». Турнир будет проходить в категориях: 70 кг, 80 кг, 90 кг, 90 +, абсолютная. Для участия в турнире необходимо заранее подать заявку на портале <a href="https://rosstudsport.ru/tournament/7976" target="_blank">rosstudsport.ru</a>. На взвешивание подойти к 12.10 По всем вопросам можно обратиться к менеджеру по силовым видам спорта <a href="https://vk.com/id535343960" target="_blank">Даниилу Дегтереву</a> или руководителю ССК «Красные волки» <a href="https://vk.com/viktoriam87" target="_blank">Виктории</a>.</p>
+                                <button class="read-more-button" onclick="openModal(1)">Подробнее</button>
+                            </div>
+                        </div>
+                        <div class="news_card" id="news_card_2" style="background-image: url('{{ url_for('static', filename='uploads/cs2.jpg') }}')">
+                            <div class="news_content">
+                                <h2>Турнир CS2 среди СПО города Вологды</h2>
+                                <p></p>
+                                <button class="read-more-button" onclick="openModal(2)">Подробнее</button>
+                            </div>
+                        </div>
+                        <div class="news_card" id="news_card_3" style="background-image: url('{{ url_for('static', filename='uploads/fest.jpg') }}')">
+                            <div class="news_content">
+                                <h2>#АССК.ФЕСТ</h2>
+                                <p></p>
+                                <button class="read-more-button" onclick="openModal(3)">Подробнее</button>
+                            </div>
+                        </div>
+                        <div class="news_card" id="news_card_4" style="background-image: url('{{ url_for('static', filename='uploads/basketball.jpg') }}')">
+                            <div class="news_content">
+                                <h2>Открыли сезон АСБ</h2>
+                                <p></p>
+                                <button class="read-more-button" onclick="openModal(4)">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="right-content">
                 <div class="calendar">
-                    <h2>Календарь</h2>
-                    <p>Здесь будет календарь</p>
+                    <div class="calendar-header">
+                        <div class="calendar-title" id="calendar-title">Календарь</div>
+                        <div class="calendar-nav">
+                            <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                            <div class="calendar-month-year" id="calendar-month-year">Месяц Год</div>
+                            <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <div>Пн</div>
+                        <div>Вт</div>
+                        <div>Ср</div>
+                        <div>Чт</div>
+                        <div>Пт</div>
+                        <div>Сб</div>
+                        <div>Вс</div>
+                    </div>
+                    <div class="calendar-days" id="calendar-days"></div>
                 </div>
 
                 <section class="statistics-section">
@@ -431,6 +539,52 @@ footer {
                 }
                 card.querySelector('p').innerHTML = truncatedContent;
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarTitle = document.getElementById('calendar-title');
+            const calendarMonthYear = document.getElementById('calendar-month-year');
+            const calendarDays = document.getElementById('calendar-days');
+            const prevMonthButton = document.getElementById('prev-month');
+            const nextMonthButton = document.getElementById('next-month');
+
+            let currentDate = new Date();
+
+            function renderCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                calendarMonthYear.textContent = `${new Intl.DateTimeFormat('ru-RU', { month: 'long' }).format(currentDate)} ${year}`;
+
+                let daysHtml = '';
+
+                for (let i = 0; i < firstDay; i++) {
+                    daysHtml += '<div></div>';
+                }
+
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const day = new Date(year, month, i);
+                    const dayString = day.toISOString().split('T')[0];
+                    daysHtml += `<div class="calendar-day" data-date="${dayString}">${i}</div>`;
+                }
+
+                calendarDays.innerHTML = daysHtml;
+            }
+
+            prevMonthButton.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+
+            nextMonthButton.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+
+            renderCalendar();
         });
     </script>
 </body>

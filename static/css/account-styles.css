@@ -222,22 +222,1070 @@ body.dark-mode .modal-content {
 }
 
 .theme-toggle {
-    background: none; 
-    border: none; 
-    padding: 0; 
-    cursor: pointer; 
-    position: relative; 
-    right: -80px; 
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    right: -80px;
     bottom: 17px;
-  }
-  
-  .theme-toggle img {
-    width: 100px; 
-    height: 100px; 
-  }
+}
+
+.theme-toggle img {
+    width: 100px;
+    height: 100px;
+}
 
 .theme-toggle:focus,
 .theme-toggle:hover {
     outline: none;
     box-shadow: none;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-right: 10px;
+    width: 200px;
+    height: 950px;
+    margin-top: 20px;
+}
+
+.sidebar button {
+    background-color: #5a0888;
+    color: #fff;
+    border: none;
+    padding: 20px 20px;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+    background-color: #4a0668;
+}
+
+#profileForm {
+    background-color: #fff;
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin-right: 20px;
+    height: 950px;
+}
+
+#profileForm h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.profile-info .column {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.profile-info .form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.profile-info .form-group p {
+    margin: 0;
+    font-size: 16px;
+    color: black;
+}
+
+#mediaForm {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#mediaForm h2 {
+    margin-top: 120px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    margin-left: 605px;
+}
+
+#mediaForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+#mediaForm form label {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#mediaForm form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 35%;
+    margin-left: 480px;
+}
+
+#mediaForm form select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 530px;
+}
+
+#mediaForm form input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 25%;
+    margin-left: 20px;
+}
+
+#mediaForm form input[type="submit"] {
+    padding: 10px 20px;
+    background: linear-gradient(#5a0888, #4a0668);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 20%;
+    height: 30%;
+    align-items: center;
+    justify-items: center;
+    margin-left: 600px;
+}
+
+#mediaForm form input[type="submit"]:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+#teamForm {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#teamForm h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    margin-left: 605px;
+}
+
+#teamForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+#teamForm form label[for="team_name"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#teamForm form label[for="course"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#teamForm form label[for="sport_type"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#teamForm form label[for="team_members"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#teamForm form label[for="reserve_member"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#teamForm form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 35%;
+    margin-left: 480px;
+}
+
+#teamForm form textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 530px;
+}
+
+#teamForm form input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 25%;
+    margin-left: 550px;
+}
+
+#teamForm form select[id="course"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 530px;
+}
+
+#teamForm form select[id="sport_type"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 530px;
+}
+
+#teamForm form input[type="submit"] {
+    padding: 10px 20px;
+    background: linear-gradient(#5a0888, #4a0668);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 20%;
+    height: 30%;
+    align-items: center;
+    justify-items: center;
+    margin-left: 600px;
+}
+
+#teamForm form input[type="submit"]:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-left: 640px;
+}
+
+.radio-group label[for="female"] {
+    margin-bottom: 2px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-right: 10px;
+}
+
+.radio-group label[for="male"] {
+    margin-bottom: 2px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-right: 10px;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 10px;
+}
+
+#physOrgForm {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#physOrgForm h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 85px;
+}
+
+#physOrgForm form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-container {
+    width: calc(100% - 520px);
+}
+
+.form-column {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 100%;
+}
+
+#physOrgForm form label {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+#physOrgForm form input[type="text"],
+#physOrgForm form select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#physOrgForm form input[type="submit"] {
+    padding: 10px 20px;
+    background: linear-gradient(#5a0888, #4a0668);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 200px;
+    margin-top: 20px;
+}
+
+#physOrgForm form input[type="submit"]:hover {
+    background-color: rgb(0, 0, 0);
+    color: #4a0668;
+}
+
+.radio-group-physOrgForm {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.radio-group-physOrgForm label {
+    margin-bottom: 0;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.radio-group-physOrgForm input[type="radio"] {
+    margin-right: 10px;
+}
+
+#eventForm {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px
+}
+
+#eventForm h2 {
+    margin-top: 120px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    margin-left: 605px;
+}
+
+#eventForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+#eventForm form label[for="event_name"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 485px;
+}
+
+#eventForm form label[for="sport_type"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 475px;
+}
+
+#eventForm form label[for="location"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#eventForm form label[for="event_type"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#eventForm form label[id="gender"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 520px;
+    white-space: nowrap;
+}
+
+#eventForm form label[for="event_time"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+#eventForm form label[for="event_date"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+#eventForm form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 25%;
+    margin-left: 555px;
+}
+
+#eventForm form input[type="date"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+}
+
+#eventForm form input[type="time"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+}
+
+#eventForm form select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 530px;
+}
+
+#eventForm form input[type="submit"] {
+    padding: 10px 20px;
+    background: linear-gradient(#5a0888, #4a0668);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 20%;
+    height: 30%;
+    align-items: center;
+    justify-items: center;
+    margin-left: 600px;
+}
+
+#eventForm form input[type="submit"]:hover {
+    background-color: white;
+}
+
+#sportsFields {
+    display: none;
+}
+
+.radio-group-eventForm {
+    display: flex;
+    align-items: center;
+    margin-left: 640px;
+    margin-bottom: 30px;
+}
+
+.radio-group-eventForm label[for="female"] {
+    margin-bottom: 2px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.radio-group-eventForm label[for="male"] {
+    margin-bottom: 2px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.radio-group-eventForm input[type="radio"] {
+    margin-right: 10px;
+}
+
+.date-time-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 455px;
+    width: 60%;
+}
+
+.date-time-container div {
+    flex: 1;
+    margin-right: 0px;
+}
+
+.date-time-container div:last-child {
+    margin-right: 300px;
+}
+
+.date-time-container input[type="date"],
+.date-time-container input[type="time"] {
+    width: 100%;
+}
+
+#editTrainingScheduleForm {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#editTrainingScheduleForm h2 {
+    margin-top: 150px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    margin-left: 470px;
+}
+
+#editTrainingScheduleForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+#editTrainingScheduleForm form label[for="sport_type_schedule"],[for="coach_name"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#editTrainingScheduleForm form label[for="training_date"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+#editTrainingScheduleForm form label[for="training_time"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+#editTrainingScheduleForm form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 25%;
+    margin-left: 530px;
+}
+
+#editTrainingScheduleForm form input[type="date"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 40%;
+}
+
+#editTrainingScheduleForm form input[type="time"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+}
+
+#editTrainingScheduleForm form select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 500px;
+}
+
+#editTrainingScheduleForm form input[type="submit"] {
+    padding: 10px 20px;
+    background: linear-gradient(#5a0888, #4a0668);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 20%;
+    height: 30%;
+    align-items: center;
+    justify-items: center;
+    margin-left: 600px;
+}
+
+#editTrainingScheduleForm form input[type="submit"]:hover {
+    background-color: white;
+}
+
+.date-time-container-TrainingScheduleForm {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 500px;
+    width: 60%;
+}
+
+.date-time-container-TrainingScheduleForm div {
+    flex: 1;
+    margin-right: 0px;
+}
+
+.date-time-container-TrainingScheduleForm div:last-child {
+    margin-right: 380px;
+}
+
+.date-time-container-TrainingScheduleForm input[type="date"],
+.date-time-container-TrainingScheduleForm input[type="time"] {
+    width: 100%;
+}
+
+#newsForm {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#newsForm h2 {
+    margin-top: 120px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    margin-left: 620px;
+}
+
+#newsForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+#newsForm form label[for="title"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#newsForm form label[for="content"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#newsForm form label[for="image"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 520px;
+}
+
+#newsForm form label[for="news_content"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 430px;
+}
+
+#newsForm form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 520px;
+}
+
+#newsForm form input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 25%;
+    margin-left: 550px;
+}
+
+#newsForm form textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 35%;
+    height: 70%;
+    margin-left: 480px;
+}
+
+#newsForm form input[type="submit"] {
+    padding: 10px 20px;
+    background: linear-gradient(#5a0888, #4a0668);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 20%;
+    height: 30%;
+    align-items: center;
+    justify-items: center;
+    margin-left: 600px;
+}
+
+#newsForm form input[type="submit"]:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+#awardsForm {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#awardsForm h2 {
+    margin-top: 120px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    margin-left: 620px;
+}
+
+#awardsForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+#awardsForm form label[for="news_title"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 465px;
+}
+
+#awardsForm form label {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 520px;
+}
+
+#awardsForm form label[for="news_content"] {
+    margin-bottom: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-left: 430px;
+}
+
+#awardsForm form input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 520px;
+}
+
+#awardsForm form input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 25%;
+    margin-left: 550px;
+}
+
+#awardsForm form textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    width: 35%;
+    height: 70%;
+    margin-left: 480px;
+}
+
+#awardsForm form input[type="submit"] {
+    padding: 10px 20px;
+    background: linear-gradient(#5a0888, #4a0668);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 20%;
+    height: 30%;
+    align-items: center;
+    justify-items: center;
+    margin-left: 600px;
+}
+
+#awardsForm form input[type="submit"]:hover {
+    background-color: white;
+}
+
+.content {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    width: calc(100% - 340px);
+}
+
+.content.active {
+    display: block;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Стили для темной темы */
+.dark-theme {
+    background-color: #333;
+    color: white;
+}
+
+.dark-theme .form-container,
+.dark-theme .sidebar,
+.dark-theme #profileForm,
+.dark-theme .content {
+    background-color: #444;
+    color: white;
+}
+
+.dark-theme .form-container input[type="text"],
+.dark-theme .form-container input[type="date"],
+.dark-theme .form-container input[type="time"],
+.dark-theme .form-container select,
+.dark-theme .form-container textarea {
+    background-color: #555;
+    color: white;
+    border-color: #666;
+}
+
+.dark-theme .sidebar button {
+    background-color: #666;
+    color: white;
+}
+
+.dark-theme .sidebar button:hover {
+    background-color: #555;
+}
+
+.dark-theme .profile-info .column label,
+.dark-theme .profile-info .column p {
+    color: black;
 }
